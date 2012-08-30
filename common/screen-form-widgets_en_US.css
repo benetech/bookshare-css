@@ -1,0 +1,147 @@
+/* Form Widgets for Advanced Search Page and others
+---------------------------------------------------------------------------- */
+div.section {
+    clear: both;
+    margin-bottom: 3px;
+    padding: 10px 14px;
+    color: #333;
+    background-color: #DCE6FF;
+    }
+
+.section h2 { margin-bottom: 0.5em; }
+
+div.section legend {
+    font-size: 120%;
+    font-weight: bold;
+    }
+
+div.section label,
+div.section span.label{
+    display: block;
+    float: left;
+    width: 20em;
+    margin: 0 auto;
+    border-bottom: 1px solid #EEF;
+    font-size: 100%;
+    line-height: 1.8em;
+    }
+
+div.section fieldset.radio {
+    margin: 0.5em 0 1em 0;
+    }
+
+div.section fieldset.radio label,
+div.section label.radio {
+    float: none;
+    display: inline;
+    width: auto;
+    border-bottom-width: 0;
+    text-align: left;
+    }
+
+div.section fieldset.radio legend {
+    margin: 0 4px 0.2em 0;
+    font-size: 100%;
+    font-weight: normal;
+    }
+
+fieldset.flushToSides {
+    text-align: right;
+    margin: 1em 0;
+}
+
+fieldset.flushToSides label {
+    float: left;
+    clear: left;
+    width: auto;
+    display: inline;
+}
+
+div.section input[type="text"] { display: block; width: 26em; }
+div.section input[type="radio"] { margin-left: 1em; }
+div.section input.inlineRadio { margin-left: 0.5em; }
+div.section fieldset.signup input[type="radio"] { margin-left: 0; }
+div.section input.short { width: 13em; }
+div.section input.tiny { width: 6em; }
+div.section input.datePick, fieldset.filters input.datePick { display: inline; width: 8em; }
+div.section input.inline { display: inline; }
+
+div.section label.textArea {
+    margin-bottom: 0;
+    border-bottom-width: 0;
+    }
+
+div.searchCategoryColumn {
+    float: left;
+    width: 32%;
+    margin: 4px 0;
+    }
+
+div.section fieldset.cbx legend {
+    margin: 0 4px 0.2em 0;
+    font-size: 100%;
+    font-weight: normal;
+    }
+
+
+div.section fieldset.cbx label,
+div.section label.cbx {
+    float: none;
+    display: inline;
+    width: auto;
+    border-bottom-width: 0;
+    }
+
+div.section fieldset.cbx input { margin-left: 1em; }
+
+div.section fieldset.cbx input.inlineCheckbox { margin-left: 0; }
+
+div.section label.tbLabel {
+    float: none;
+    width: auto;
+    text-align: left;
+    }
+
+div.section textarea {
+	margin-bottom: 1em;
+	font-family: Helvetica, Arial, "Lucida Grande", Geneva, sans-serif;
+	font-size: 95%;
+	padding: 0.2em;
+	}
+
+div.section br { clear: left; }
+
+div.section select.block {
+	display: block;
+	width: 26em;
+}
+
+
+input.button {
+    color: #fff;
+    background-color: #F8872B;
+    font-size: 95%;
+    font-weight: bold;
+   }
+
+div.section input.button { float: left; }
+
+/*spread a set of buttons out*/
+input.grouped,
+div.grouped input { margin-right: 1em; }
+
+/*next button should render rightmost and be default*/
+div.nextBack { direction: rtl; }
+div.nextBack input.button { float: none; }
+
+div.section input.advSearchButton {
+    margin-bottom: .5em;
+    }
+
+div.disabled label,
+div.disabled legend,
+div.disabled h2,
+div.disabled h3,
+div.disabled h4,
+div.disabled li,
+div.disabled p { color: #999; }

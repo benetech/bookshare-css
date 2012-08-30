@@ -1,0 +1,37 @@
+/*
+Part of Canvaschart?:
+http://webfx.eae.net/dhtml/chart/chart.html
+
+Seems to be associated with the jquery.chart-0.2.1
+bundle that's in /js/third-party/jquery
+
+but google comes up pretty much blank on jquery.chart
+*/
+
+.chart {
+	font: menu;
+	background: white;
+	color: black;
+	overflow: hidden;
+	position: relative;
+}
+
+.chart .legend {
+	float: left;
+	border: 1px solid black;
+	background: white;
+	padding: 5px 10px 5px 10px;
+}
+
+.chart .legend ul {
+	margin: 0px;
+	padding: 0px 0px 0px 20px;
+}
+
+.chart .legend ul li {
+	list-style: square;
+}
+
+.chart .legend ul li span {
+	color: black;
+}

@@ -1,0 +1,22 @@
+/*
+SGA:
+This should probably be removed at some point as I don't think it's really being used.
+As of 2008-08-13, it is referenced by 4 templates:
+wireframe-catalog-report.ftl, wireframe-legacy.ftl, wireframe-popup.ftl
+*/
+a:link { text-decoration:none; font-weight:600; color: #0000FF }
+a:visited { text-decoration:none; font-weight:600; color: #663399 }
+a:active {text-decoration:none; font-weight:600; color: #996699 }
+/* a:hover {text-decoration:underline; font-weight:600; color: #996699 } */
+body,p,ul,ol,li,div,td,th,address,blockquote{ font-family: Verdana, Arial, Helvetica, sans-serif; }
+.bodytext{ font-style: normal; color: #000000 ; font-size: 90%; font-weight: normal; }
+.fineprint{ font-family: Helvetica, Verdana, Arial, sans-serif; font-style: normal; color: #000000 ; font-size: 70%; font-weight: normal; }
+.navright{ font-style: normal; color: #000000 ; font-size: 90%; font-weight: bold; }
+.navright2{ font-style: normal; color: #000000 ; font-size: 80%; font-weight: normal; }
+.pageheading{ font-style: normal; color:  #666666 ; font-size: 150%; font-weight: bold; }
+.standardheader{ font-style: normal; color:  #000000 ; font-size: 105%; font-weight: bold; }
+.standardheader2{ font-style: normal; color:  #000000 ; font-size: 100%; font-weight: bold; }
+.headeronbar{ font-style: normal; color:  #FFFFFF ; font-size: 80%; font-weight: bold; }
+.smallertext{ font-style: normal; font-size: 90%; font-weight: bold; }
+.sidebar{ font-style: normal; color: #FFFFFF ; font-size: 90%; font-weight: bold; }
+

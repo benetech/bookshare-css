@@ -1,0 +1,38 @@
+* { background-image: none; }
+
+.hide,
+.printHide,
+.sectionNav,
+#brandingHeader,
+#dashboardHeader,
+#topNavHeader,
+#legal,
+#searchResultsViewSwitch,
+#searchFilterTable,
+#searchFilterList { display: none; }
+
+
+a:link, a:visited {
+    color: #520;
+    background: transparent;
+    font-weight: bold;
+    text-decoration: none;
+    }
+
+#content a[href^="http"]:after {
+    content: " (" attr(href) ") ";
+    font-size: 90%;
+    }
+
+table {
+    border-collapse: collapse;
+    border: 1pt solid #000;
+    }
+th,
+td {
+    padding: 5pt;
+    border: 1pt solid #000;
+    }
+
+span.delimit:after,
+td.author ul li.delimit:after { content: " • "; }

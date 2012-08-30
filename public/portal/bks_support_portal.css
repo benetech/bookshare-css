@@ -1,0 +1,246 @@
+/** CSS for Bookshare Self Service Portal **/
+/*
+ * Grafts of screen.css
+ */
+body {
+    background: #fff none;
+    text-align: left;
+    color: #333333;
+    font-family: Helvetica,Arial,"Lucida Grande",Geneva,sans-serif;
+    font-size: small;
+}
+table {
+    font-size:100%;
+}
+a:link {
+    color: #0000FF;
+    text-decoration: none;
+}
+a:visited {
+    color: #4400CC;
+    text-decoration: none;
+}
+a:hover {
+    color: #0000FF;
+    text-decoration: underline;
+}
+/*
+ * Adaptations of the Salesforce generated HTML copied from SSP stylesheet
+ */
+#spc_frame {
+    display:none;
+}
+#spc_div {
+    display:block;
+}
+.requiredMark {
+    display:none;
+}
+.newPageHeader {
+    display:none;
+}
+.solutionTitleDetail, .listTitle, .pageTitle, .categoryHeader, a.categoryNode {
+    font-family: Verdana,Helvetica,Arial,"Lucida Grande",Geneva,sans-serif;
+    line-height: 1.2;
+    margin: 0.5em 0 0.3em;
+    font-weight: bold;
+}
+.pageTitle {
+    font-size: 120%;
+}
+.solutionTitleDetail {
+    font-size: 105%;
+}
+.htmlDetailElementDiv {
+    font-size: 100%;
+    line-height: 1.4;
+}
+tr.categoryHeaderColor, td.categoryBackground {
+    background-color: #DCE6FF;
+}
+td.categoryHeader {
+    padding: 10px 14px 6px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+td.categoryBackground {
+    padding: 0px 14px;
+}
+a.categoryNode {
+    font-size: 95%;
+}
+.btn, .button {
+    background-color: #F8872B;
+    color: #FFFFFF;
+    font-size: 95%;
+    font-weight: bold;
+}
+.listEntryOdd, .listEntryEven {
+    padding: 0.3em 0.1em 0.0em;
+}
+.listHeaderLine {
+    background-color: #999;
+}
+.listHeading {
+    padding: 0.2em 0.0em 0.1em;
+}
+.pbSearch strong {
+    font-weight: normal;
+}
+/*
+ * Adaptations specific to Self-Service Portal
+ */
+.menuBarFrame {
+    background-color: #ebebeb;
+    color: #e8e8e8;
+    line-height: 1.8em;
+    padding-bottom: 0px;
+    padding-left: 2em;
+}
+a.tabon, a.taboff {
+    /* font-family: Verdana,Helvetica,Arial,"Lucida Grande",Geneva,sans-serif; */
+    font-weight:bold;
+    border: solid 1px #333;
+    border-bottom-width: 0px;
+    line-height: 1.8em;
+    padding: 0.3em 1em 0.4em;
+    vertical-align: bottom;
+}
+a.tabon {
+    background-color: #fff;
+}
+a.taboff {
+    color: #fff; background-color: #069;
+}
+td.titleInfo {
+    visibility: hidden;
+    display: none;
+}
+.editLabel, .suggestioncasedetaillabel, .detailLabel {
+    font-weight: bold;
+}
+.detailLabel {
+    padding: 2px 4px;
+}
+/*
+ * Leftovers from default Salesforce PKB and SSP stylesheets
+ */
+.attachbkgd {
+    BACKGROUND-COLOR: #FFFFFF;
+}
+.blackline {
+    BACKGROUND-COLOR: #CCCCCC;
+}
+.bodyBold {
+    COLOR: #000000; FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.bodyStd {
+    COLOR: #000000; FONT-SIZE: 12px; LINE-HEIGHT: 15px; TEXT-DECORATION: none
+}
+.categoryTitleAlignment{
+    TEXT-ALIGN: CENTER;
+}
+.closereasoneditdata {
+    COLOR: #333333; BACKGROUND-COLOR: #FFFFFF; PADDING: 2px; PADDING-LEFT: 4px;
+}
+.closereasoneditlabel {
+    COLOR: #335577; FONT-WEIGHT: bold; BACKGROUND-COLOR: #FFFFFF; PADDING: 2px; PADDING-LEFT: 4px;
+}
+.commentauthor {
+    COLOR: #000000; FONT-WEIGHT: bold; LINE-HEIGHT: 14px; PADDING: 2px; PADDING-LEFT: 4px;
+}
+.commentdate {
+    COLOR: #000000; FONT-WEIGHT: bold; LINE-HEIGHT: 14px; PADDING: 2px; PADDING-LEFT: 4px;
+}
+.datafield {
+    COLOR: #000000; BACKGROUND-COLOR: #FFFFFF; PADDING: 2px; PADDING-LEFT: 4px;
+}
+.datalabel {
+    COLOR: #335577; FONT-WEIGHT: bold; BACKGROUND-COLOR: #FFFFFF; PADDING: 2px; PADDING-LEFT: 4px;
+}
+.detailData {
+    BACKGROUND-COLOR: #FFFFFF; COLOR: #000000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.detailLabel {
+    BACKGROUND-COLOR: #FFFFFF; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.editData {
+    BACKGROUND-COLOR: #FFFFFF; COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.editLabel {
+    BACKGROUND-COLOR: #FFFFFF; COLOR: #000000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.error {
+    font-size : 10pt; color : #FF0000;
+}
+.errorMsg {
+    COLOR: #990000; FONT-SIZE: 12px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.labelCol {
+    padding-right: 10px; font-weight: bold;
+}
+.logo {
+    BORDER-COLOR: #DDDDDD; BORDER-STYLE: solid; BORDER-WIDTH: 1px;
+}
+.pageDescription {
+    COLOR: #000000; FONT-SIZE: 12px;
+}
+.requiredsymbol {
+    COLOR: #990000; FONT-WEIGHT: bold;
+}
+.searchPrompt {
+    COLOR: #000000; FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.searchTips {
+    COLOR: #000000; FONT-SIZE: 12px; LINE-HEIGHT: 15px; TEXT-DECORATION: none
+}
+.searchTipsHeader {
+    COLOR: #000000; FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.solutionMatch {
+    COLOR: #000000; FONT-SIZE: 11px; FONT-WEIGHT: bold; TEXT-DECORATION: none;
+}
+.solutionQuestion {
+    COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: bold; TEXT-DECORATION: none;
+}
+.solutionTitleList {
+    COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; TEXT-DECORATION: underline;
+}
+.solutionbodydetail {
+    COLOR: #000000; BACKGROUND-COLOR: #FFFFFF; PADDING: 4px; PADDING-LEFT: 4px;
+}
+.suggestioncasedetaildata {
+    COLOR: #000000; BACKGROUND-COLOR: #FFFFFF; PADDING: 2px; PADDING-LEFT: 4px;
+}
+.suggestionmessage {
+    COLOR: #000000; FONT-WEIGHT: bold; BACKGROUND-COLOR: #FFFFFF;
+}
+.text {
+}
+.titleHeaderLineBottom {
+    BACKGROUND-COLOR: #000000;
+}
+.titleHeaderLineTop {
+    BACKGROUND-COLOR: #000000;
+}
+.titleInfo {
+    COLOR: #000000; FONT-SIZE: 10px;
+}
+TD.custommessagecontainer {
+    PADDING: 5px; BACKGROUND-COLOR: #FFFFFF;
+}
+TD.pagefootercontainer {
+    BACKGROUND-COLOR: #FFFFFF;
+}
+TD.pagefooterline {
+    BACKGROUND-COLOR: #99CCFF; HEIGHT: 1px;
+}
+TD.pageheadercontainer {
+    BACKGROUND-COLOR: #FFFFFF;
+}
+TD.pageheaderline {
+    BACKGROUND-COLOR: #000000; HEIGHT: 1px;
+}
+img{
+    border:0;
+}

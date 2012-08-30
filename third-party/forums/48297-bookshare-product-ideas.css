@@ -1,0 +1,255 @@
+/** Attempted overrides **/
+
+.tabs li a:hover em,
+.sidebar .nav li a:hover small,
+.suggestion h2 a.title:hover {
+    color: #0000ff !important;
+}
+
+a:hover {
+    background-color:inherit !important;
+    color:#0000ff !important;
+    text-decoration:underline !important;
+}
+
+#status {
+	background:url("http://www.bookshare.org/img/public/bk-sidebar.png") repeat-x scroll left top transparent !important;
+	border:1px solid #B0C6F5;
+	padding:1px;
+}
+
+#status h4 {
+	background-color:transparent;
+	color:inherit;
+}
+
+#status.has-votes h4, #status.has-votes .help, .suggestion .moderation .votes, .supporter .votes, #user .activity .comment .votes, .suggestion .moderation li.selected a {
+	background-color:transparent !important;
+}
+
+#status.has-votes ul.help a {
+	color:#00f;
+}
+
+.has-sidebar #forum {
+background: inherit !important;
+}
+
+.points {
+background: url("http://www.bookshare.org/img/public/bk-sidebar.png") repeat-x scroll left top transparent !important;
+}
+
+#page-header,
+#footer.uservoice-component,
+a.powered-by {
+    display: none !important;
+}
+
+/** Imports from screen.css **/
+body {
+	background:url("http://www.bookshare.org/img/public/bk-body.png") repeat-x scroll left top #B0C6F5;  /* Also set bg color in forum settings */
+	color:#333333;
+	font-family:Helvetica,Arial,"Lucida Grande",Geneva,sans-serif;
+	font-size:small;
+}
+
+#wrap {
+    position: relative;
+    width: 73.5em;
+    margin: 0 auto 20px auto;
+    text-align: left;
+    }
+
+#brandingHeader {
+    height: 56px;
+    background: transparent url(http://www.bookshare.org/img/public/bk-header-inner.png) left top repeat-x;
+    display: block !important;
+    }
+
+#brandingHeader a:focus { outline: 0; }
+
+#brandingHeader .inner {
+    height: 56px;
+    background: transparent url(http://www.bookshare.org/img/public/bk-header_branding_logo.png) left top no-repeat;
+    }
+
+#brandingHeader a {
+    display: block;
+    width: 218px;
+    height: 56px;
+    }
+
+/* "Dashboard" contains login, quick search, quick links
+---------------------------------------------------------------------------- */
+#dashboardHeader {
+    margin-top: 2.4em;
+    background: #DBE6FF url(http://www.bookshare.org/img/public/bk-dashboard.png) left bottom repeat-x;
+    display:none; /* not in UserVoice yet */
+    }
+
+#dashboardHeader .inner {
+    background: transparent url(http://www.bookshare.org/img/public/bk-dashboard-topborder.png) left top repeat-x;
+    }
+
+#dashboardHeader .ul { background: transparent url(http://www.bookshare.org/img/public/bk-dashboard-ul.png) left top no-repeat; }
+#dashboardHeader .ur { background: transparent url(http://www.bookshare.org/img/public/bk-dashboard-ur.png) right top no-repeat; }
+#dashboardHeader .lr { background: transparent url(http://www.bookshare.org/img/public/bk-dashboard-lr.png) right bottom no-repeat; }
+#dashboardHeader .ll { padding: 2px 0; background: transparent url(http://www.bookshare.org/img/public/bk-dashboard-ll.png) left bottom no-repeat; }
+
+#dashboardHeader .divider { background: transparent url(http://www.bookshare.org/img/public/bk-divider-dashboard.png) 45.5% 0 repeat-y; }
+#dashboardHeader .divider .divider { background-position: 78.8% 0; }
+
+#dashboardHeader input:focus {
+    outline: 0.2em solid #F37D01;
+    /*-moz-outline: none !important;*/
+    }
+
+#dashboardHeader label {
+    display: block;
+    font-weight: bold;
+    }
+
+#dashboardHeader #loginControl label,
+#dashboardHeader #simpleSearch label { margin-bottom: 0.3em; }
+
+#dashboardHeader h2 { margin-top: 0; }
+#dashboardHeader input[type="submit"] {
+    float: left;
+    margin: 0.7em 1.0em 0 0;
+    color: #FFF;
+    background-color: #f8872b;
+    font-size: 95%;
+    font-weight: bold;
+    }
+
+p.linkListLabel {
+    float: left;
+    margin: 0.8em 0 0 0;
+    padding: 0.2em 0.5em 0.8em 0;
+    font-weight: bold;
+    }
+
+#dashboardHeader ul {
+    list-style-type: none;
+    margin-left: 0;
+    }
+
+ul.linkList {
+    list-style-type: none;
+    display: block;
+    float: left;
+    margin-top: 0.8em;
+    margin-left: 0;
+    }
+
+ul.linkList li {
+    float: left;
+    border-left: 1px solid #999;
+    }
+
+ul.linkList li a,
+ul.linkList li strong {
+    display: block;
+    padding: 0.3em 0.6em 0.1em 0.6em;
+    }
+ul.linkList li.first { border-width: 0; }
+ul.linkList li.first a,
+ul.linkList li.first strong { padding-left: 0; }
+
+ul.linkList li input[type="checkbox"] {
+    display: block;
+    float: left;
+    margin: 0.1em 0.3em 0 0;
+    line-height: 1;
+    }
+
+#dashboardHeader ul.linkList li label {
+    display: block;
+    float: left;
+    padding: 0.3em 0.8em 0.1em 0;
+    font-weight: normal;
+    }
+
+/* Main Content Area
+---------------------------------------------------------------------------- */
+#main {
+    position: relative;
+    background: transparent url(http://www.bookshare.org/img/public/bk-border-r.png) right top repeat-y;
+    }
+
+#mainInner {
+    padding: 0 7px;
+    background: transparent url(http://www.bookshare.org/img/public/bk-border-l.png) left top repeat-y;
+    }
+
+#canvas {
+    padding: 0.1em 12px 0 12px; /* BKS adjustment for hidden dashboard */
+    background-color: #FEBD57;
+    }
+
+#content {
+    position: relative;
+    margin-top: 12px;
+    background: #FFF url(http://www.bookshare.org/img/public/bk-content.png) left bottom repeat-x;
+    }
+
+#contentInner {
+    background: transparent url(http://www.bookshare.org/img/public/bk-dashboard-topborder.png) left top repeat-x;
+    }
+
+#content .ul { background: transparent url(http://www.bookshare.org/img/public/bk-content-ul.png) left top no-repeat; }
+#content .ur { background: transparent url(http://www.bookshare.org/img/public/bk-content-ur.png) right top no-repeat; }
+#content .lr { background: transparent url(http://www.bookshare.org/img/public/bk-content-lr.png) right bottom no-repeat; }
+#content .ll { min-height: 25em; padding: 1em; background: transparent url(http://www.bookshare.org/img/public/bk-content-ll.png) left bottom no-repeat; }
+
+#content p {
+    font-size: 100%;
+    line-height: 1.4;
+    }
+
+#content ul {
+    margin-top: 0.5em;
+    }
+
+#content li {
+    font-size: 100%;
+    line-height: 1.3;
+    }
+
+ul.overviewList a:link,
+ul.overviewList a:visited { font-weight: bold; }
+
+#wrap #footer {
+    margin: 0;
+    padding: 0;
+    color: #666;
+    background: transparent url(http://www.bookshare.org/img/public/bk-footer.png) left bottom no-repeat;
+    width: auto !important;
+    display: block !important;
+    }
+
+#footerInner {
+    padding: 1em 1.5em 20px 1.5em;
+    background: transparent url(http://www.bookshare.org/img/public/bk-footer_inner.png) right bottom no-repeat;
+    }
+
+div#legal {
+    float: right;
+    }
+
+/* Floats, Clears & Hide
+---------------------------------------------------------------------------- */
+.fl { float: left; }
+.fr { float: right; }
+img.fl { margin: 0 12px 12px 0; }
+img.fr { margin: 0 0 12px 12px; }
+.cl { clear: left; }
+.cr { clear: right; }
+.cb { clear: both; }
+.hide {
+    position: absolute;
+    display: block;
+    top: -1000px;
+    left: -1000px;
+    font-size: 1px;
+    }

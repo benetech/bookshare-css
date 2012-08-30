@@ -1,0 +1,282 @@
+	body {
+		background: url("/img/public/landing/1backgroundblue.jpg") #AFC5F6;
+		background-repeat: repeat-x;
+		background-position: top left;
+		margin:0px;
+		font-family: Helvetica, Arial, Verdana, sans-serif;
+		font-size: 1em;
+}
+
+	p,td,th {
+		font-family: Helvetica, Arial, Verdana, sans-serif;
+		font-size: 1em;
+}
+
+span {
+font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.input {
+font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	margin-top: 5px;
+	color: #000;
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	font-size: 1.5em;
+}
+
+.whatdoesbookshareoffer {
+	text-align:center;
+        margin-bottom:0px;
+	color: #000;
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	font-size: 1.25em;
+}
+
+
+	#wrap {
+		background-color: #FFF;
+		width: 764px;
+		min-height: 100px;
+		margin: 5px auto 10px auto;
+		border: 1px solid #666;
+}
+
+	#toporange {
+		background: url("/img/public/landing/2toporange.jpg") #F63;
+		background-repeat: repeat-x;
+		background-position: top left;
+		height: 28px;
+}
+
+	#backingorange {
+		background: url("/img/public/landing/3backingorange.jpg") #FC6;
+		background-repeat: repeat-x;
+		background-position: top left;
+}
+
+	#toplightbluebar {
+		background: url("/img/public/landing/topbar_blank.jpg");
+		background-repeat: no-repeat;
+		background-position: center center;
+		padding-top: 5px;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	height: 80px;
+}
+
+
+	#whiteboxtop {
+		background: url("/img/public/landing/white_boxtop.jpg") #FFF;
+		background-position: top center;
+		background-repeat: no-repeat;
+		width: 759px;
+		height: 14px;
+		margin: 0px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+
+	#whiteboxmiddle {
+		background: url("/img/public/landing/white_boxmiddle.jpg") #FFF;
+		background-position: top center;
+		background-repeat: repeat-y;
+		color: #333;
+		width: 759px;
+		margin: 0px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+	#pagecontent {
+		padding: 5px 15px 0px 15px;
+		font-family: Helvetica, Arial, Verdana, sans-serif;
+		font-size: 1em;
+	}
+
+		#pagecontenttop {
+			margin-bottom: 5px;
+			text-align: center;
+
+		}
+
+		.graytext {
+			font-family: Helvetica, Arial, Verdana, sans-serif;
+			font-size: 1.25em;
+			color: #666;
+			}
+
+	#rightsidebar {
+		float: right;
+		margin-right: 2px;
+		padding: 0px 5px 5px 5px;
+		text-align: center;
+}
+
+
+	.caption {
+		color: #666;
+		font-size: 0.75em;
+}
+
+	#benefits {
+		width: 440px;
+}
+
+
+	ul {
+		padding: 0;
+		margin: 0;
+		}
+
+
+		li.benefit {
+		margin-left: 0px;
+		font-family: Helvetica, Arial, Verdana, sans-serif;
+		font-size: 15px;
+		color: #333;
+		list-style: none;
+		line-height: 1.5;
+		margin-bottom: 7px;
+                width: 385px;
+		}
+
+
+		li.benefitlarger {
+		margin-left: 0px;
+		font-family: Helvetica, Arial, Verdana, sans-serif;
+		font-size: 16px;
+		color: #333;
+		list-style: none;
+		line-height: 1.5;
+		margin-bottom: 7px;
+	width: 385px;
+		}
+
+
+
+	.highlight {
+		font-family: 'Comic Sans MS', Helvetica, Arial, Verdana, sans-serif;
+		font-style: italic;
+		font-variant: small-caps;
+		color: #000;
+		margin-right: 5px;
+		font-weight: bold;
+}
+
+	.highlightbig {
+		font-family: 'Comic Sans MS', Helvetica, Arial, Verdana, sans-serif;
+		font-style: italic;
+		font-variant: small-caps;
+		color: #000;
+		margin-right: 5px;
+		font-weight: bold;
+		font-size: 2em;
+}
+
+
+	#signuptoday {
+		margin-top: 15px;
+		text-align: center;
+}
+
+#bigboxcenter {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+	#whiteboxbottom {
+		background: url("/img/public/landing/white_boxbottom.jpg") #FFF;
+		background-position: top center;
+		background-repeat: no-repeat;
+		width: 759px;
+		height:14px;
+		margin-left: auto;
+		margin-right: auto;
+                clear:both;
+}
+
+
+	#footer {
+		font-family: Arial, Helvetica, sans-serif;
+		background-color: #FFF;
+		min-height: 72px;
+		width: 759px;
+		margin: 5px 0px 0px 0px;
+		color: #999;
+}
+
+	#footerlogo {
+		float: left;
+		width: 95px;
+		min-height: 50px;
+	}
+
+		#footersection1 {
+			color: #999;
+			font-family: Helvetica, Arial, Verdana, sans-serif;
+			font-size: 0.65em;
+			padding: 0px 5px 0px 5px;
+		}
+
+		#footersection2 {
+			color: #999;
+			font-family: Helvetica, Arial, Verdana, sans-serif;
+			font-size: 0.65em;
+			padding: 0px 5px 0px 5px;
+		}
+
+
+.topbargray {
+	color: #333;
+	font-style: italic;
+}
+#signuptodaytopbarplacement {
+	margin-left: 150px;
+	width: 550px;
+	height: 50px;
+	text-align: right;
+	padding: 20px 5px 0px 5px;
+
+}
+
+
+a:link  {color:#609;}
+
+a:visited {color:#609;}
+
+a:active {color:#609;background-color:#FC6;}
+
+a:hover {color:#609;background-color:#FC6;}
+
+
+a.smallerlink:link  {color:#609;}
+
+a.smallerlink:visited {color:#609;}
+
+a.smallerlink:active {color:#609;background-color:#FC6;}
+
+a.smallerlink:hover {color:#609;background-color:#FC6;}
+
+
+a.signuptoday:link  {color:#F63;font-size: 20px;}
+
+a.signuptoday:visited {color:#F63;font-size: 20px;}
+
+a.signuptoday:active {color:#609;background-color:#FC6;font-size: 20px;}
+
+a.signuptoday:hover {color:#609;background-color:#FC6;font-size: 20px;}
+
+
+
+
+hr.gray {
+	color: #CCC;
+}

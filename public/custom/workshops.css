@@ -1,0 +1,275 @@
+/*
+This stylesheet is intended for use with "workshops.bookshare.org"
+*/
+
+/* Global resets */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+/* Base Styles
+---------------------------------------------------------------------------- */
+body {
+    font: 81.25%/1.4 Arial, Helvetica, sans-serif; /* 13px */
+    background-color: #d7d2cb;
+}
+
+#wrapper {
+    background: url("/img/public/workshops/background-shadow.png") top center repeat-y;
+    width: 830px;
+    margin: 0 auto 10px auto;
+}
+
+#wrapper_inner {
+    background: url("/img/public/workshops/background-bottom.png") bottom no-repeat;
+    width: 800px; /* plus 30px padding = 830px */
+    padding: 10px 15px 5px 15px;
+}
+
+a {
+    color: #435E9D;
+    text-decoration: underline;
+}
+
+a:hover { color: black;}
+
+a img, 
+fieldset {
+    border: none;
+    outline: none;
+}
+
+p, ul, ol {
+    margin-bottom: 15px;
+}
+
+h1, h2, h3, legend {
+    font-weight: bold;
+    line-height: 1.2;
+    color: #435E9D;
+    margin-bottom: 5px;
+}
+
+h1, legend {
+    font-size: 123%; /* 16px */
+}
+
+h2 {
+    font-size: 108%; /* 14px */
+}
+
+h3 {
+    font-size: 100%;
+    color: black;
+}
+
+.hidden { display: none;}
+
+.clearFloats {
+    height: 0;
+    clear: both;
+}
+
+
+/* Header
+---------------------------------------------------------------------------- */
+#header {
+    background: #ead988 url("/img/public/workshops/header-photos.jpg") bottom no-repeat;
+}
+
+#header_inner {
+    /* Transparent space in image allows bottom-right positioning */
+    background: url("/img/public/workshops/header_logo.png") bottom right no-repeat;
+    width: 800px;
+    padding-bottom: 179px;
+    margin-bottom: 20px;
+}
+
+#header h2 {
+    font-size: 169%; /* 22px */ 
+    letter-spacing: .75px;
+    padding: 12px 203px 8px 10px;
+    margin-bottom: 0;
+}
+
+/* Navigation Menu
+---------------------------------------------------------------------------- */
+#nav {
+    width: 185px; /* plus 20px padding = 200px */
+    padding-right: 15px;
+    float: left;
+}
+
+#nav a {
+    font-weight: normal;
+    text-decoration: none;
+    color: #435E9D;
+    border: none;
+    display: block;
+    padding: 3px 10px;
+}
+
+#nav a:hover {
+    color: #f48221;
+    text-decoration: underline;
+}
+
+/* Parent Menu */
+#nav ul { border-top: 1px dotted #435E9D;}
+#nav ul li {
+    list-style-type: none;
+    border-bottom: 1px dotted #435E9D;
+}
+
+/* Sub-Menu */
+#nav ul ul { margin-bottom: 5px;}
+#nav ul ul, 
+#nav ul ul li {
+    border: none;
+}
+#nav ul ul li { margin-left: 10px;}
+
+
+/* Main
+---------------------------------------------------------------------------- */
+
+#main {
+    width: 385px;
+    float: left;
+}
+
+#main ul li {
+    margin-left: 20px;
+}
+
+/* Testimonial
+---------------------------------------------------------------------------- */
+#testimonial {
+    background-color: #faf7ed;
+    width: 175px; /* plus 2px border, 20px padding = 177px */
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #d7d2cb;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    float: right;
+}
+
+
+/* Forms
+---------------------------------------------------------------------------- */
+#main.form { width: 595px;}
+
+.fieldset { background: #d7d2cb url("/img/public/workshops/form-top.png") top no-repeat;}
+.fieldset_inner {
+    background: url("/img/public/workshops/form-bottom.png") bottom no-repeat;
+    width: 555px; /* plus 40px padding = 595px */
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form h3 {
+    border-top: 1px dotted white;
+    border-bottom: 1px dotted white;
+    margin: 20px 0;
+    width: 535px; /* to appease IE7 */
+    padding: 10px;
+}
+
+.form th h3 {
+    text-align: left;
+    margin-top: 0;
+}
+
+.form table { width: 600px;}
+.form td { vertical-align: top}
+.form td:first-child { width: 250px;}
+.form label { 
+    display: block;
+    border-bottom: 1px solid white;
+    margin-right: 15px;
+    padding-bottom: 3px;
+}
+
+.form input, 
+.form textarea, 
+.form select {
+    font-size: 100%;
+    margin-bottom: 10px;
+}
+
+.form input { width: 180px;}
+.form textarea { font-family: Arial, Helvetica, sans-serif;}
+.form select { width: 184px;}
+
+.form textarea {
+    width: 280px;
+    height: 150px;
+}
+
+.form td.checkbox input {
+    width: auto;
+    margin-right: 5px;
+    margin-top: 3px;
+    float: left;
+    clear: both;
+}
+
+.form td.checkbox label, 
+.form td.dateEntry label {
+    width: auto;
+    border: none;
+    margin-right: 5px;
+    float: left;
+}
+
+.form td.dateEntry { padding-bottom: 5px;}
+.form td.dateEntry label { display: inline;}
+.form td.dateEntry select { margin-right: 10px; float: left;}
+.form td.dateEntry select.month { width: 85px;}
+.form td.dateEntry select.day { width: 48px;}
+.form td.dateEntry select.year { width: 65px;}
+
+.form address { margin: 0 0 20px 20px;}
+
+.form input.submitButton {
+    width: auto;
+    margin-bottom: 0;
+}
+
+#error,
+.error {
+    color: #F00;
+    font-style: italic;
+}
+
+div.innerErrorCode,
+div.innerWarnCode,
+div.innerInfoCode {
+    margin-bottom: 0.7em;
+    padding: 1em;
+    font-size: 95%;
+    font-weight: normal;
+    }
+
+div.innerErrorCode h1,
+div.innerWarnCode h1,
+div.innerInfoCode h1,
+div#messaging div.inner {
+    padding: 0;
+    border-width: 0;
+    font-size: 100%;
+    font-weight: bold;
+    }
+
+/* Footer
+---------------------------------------------------------------------------- */
+#footer {
+    font-size: 12px;
+    color: #78716E;
+    margin-top: 30px;
+    padding: 5px 10px;
+    border-top: 1px solid #d7d2cb;
+}

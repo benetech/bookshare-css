@@ -1,0 +1,108 @@
+a:active {
+    background-color: #F37D01;
+    color: #000;
+    }
+#udm ul a.udmR:active,
+#udm ul a.udmY:active {
+    background-color:#FFF;
+    }
+#brandingHeader a:active { background-color: transparent; }
+#content,
+#dashboardHeader .inner,
+.ul,
+.ur,
+.lr,
+.ll,
+#dashboardHeader .divider,
+.inner { zoom: 1; }
+
+div#searchResultsViewSwitch { top: 1.5em; }
+#searchFilterTable input[type="submit"] { line-height: 1em; padding-top: 0.3em; }
+div#legal { padding: 0 0 0.3em 0; }
+table.resultsTable { margin-top: 2em; }
+.resultsTable caption { padding-bottom: 0.7em; }
+#dashboardHeader input[type="submit"] { margin-right: 0.6em; }
+#dashboardHeader #j_remember { margin-right: 0; }
+#dashboardHeader #loginControl label,
+#dashboardHeader #simpleSearch label { margin-bottom: 0; }
+#content ul.linkList { zoom: 1; margin-bottom: 0.4em; }
+
+ol.steps li,
+#content .breadcrumb ul li {
+    padding-left: 0.6em;
+    background: transparent url(/img/public/bk-li-steps.png) 0 50% no-repeat;
+    }
+ol.steps li.first,
+#content .breadcrumb ul li.first {
+    padding-left: 0;
+    background-image: none;
+    }
+div.section fieldset.radio legend,
+div.section fieldset.cbx legend { margin-left: -6px; }
+#topNavHeader { z-index: 999; }
+.udm ul { margin-left: 3px !important; }
+div.section { zoom: 1; }
+span.throughDash {
+    display: inline-block;
+    width: 4px;
+    height: 1em;
+    background: transparent url(/img/public/bk-throughDash.png) 0 70% no-repeat;
+    }
+.oneCol p { max-width: none; }
+.oneCol li {
+    max-width: none;
+    margin-right: 22em;
+    }
+.oneCol .contentRight li,
+.oneCol li ul li,
+.oneCol li ol ol li { margin-right: 0; }
+.oneCol ol li {
+    max-width: none;
+    margin-right: 16em;
+    margin-left: 1em;
+    }
+.oneCol ol.authList li {
+    margin-right: 0;
+    margin-left: 0;
+    }
+
+.oneCol table li { margin-right: 1em; }
+div#messaging {
+    max-width: none;
+    margin-right: 36em;
+    }
+div#resultsList h1.browse { margin-top: 0; }
+
+a.larr {
+    padding-left: 20px;
+    background: transparent url(/img/public/bk-larr.png) 0 50% no-repeat;
+    }
+span.larr {
+    padding-left: 20px;
+    background: transparent url(/img/public/bk-larr-dimmed.png) 0 50% no-repeat;
+    }
+a.rarr {
+    padding-right: 20px;
+    background: transparent url(/img/public/bk-rarr.png) 100% 50% no-repeat;
+    }
+span.rarr {
+    padding-right: 20px;
+    background: transparent url(/img/public/bk-rarr-dimmed.png) 100% 50% no-repeat;
+    }
+span.delimit,
+td.author ul li.delimit {
+    padding-right: 13px;
+    background: transparent url(/img/public/bk-author-delimit.png) 100% 50% no-repeat;
+    }
+#rosterListTable { margin-top: 0.8em; }
+div.section input.advSearchButton { margin-right: 0; }
+#featuredContent #errorWrapper a.closebox,
+#featuredContent #helpWrapper a.closebox { background: transparent url(/img/public/errorWrapper-closebox.png) left top no-repeat; }
+#featuredContent .newsItem a[href $='.doc'] { padding-left: 0; background-image: none; }
+
+/*To fix IE same page navigation focus bug and IE/Jaws not "seeing" the list on the home page when in list navigation mode*/
+#mainContent,
+ul.featureList li { zoom: 1; }
+
+/*IE6 and 7 can't handle <em> in a float*/
+em {zoom: 100%; overflow: hidden;}

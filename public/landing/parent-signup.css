@@ -1,0 +1,132 @@
+/*
+This stylesheet is intended for use with "Parent Signup" landing pages
+*/
+
+/* Global resets */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+body {
+    background: #78716e url("/img/public/landing/parent-signup/background.png") top repeat-x;
+    font: 75%/1.4 Arial, Helvetica, sans-serif; /* font-size: 12px */
+    color: #666666;
+}
+
+a { 
+    color: #666666;
+    text-decoration: underline;
+}
+a:hover { color: #363636;}
+
+a.important { 
+    color: #435e9d;
+    font-weight: bold;
+}
+
+p, ul, li { margin-bottom: 10px;}
+
+li {
+    background: url("/img/public/landing/parent-signup/bullet.png") 0 .58em no-repeat;
+    list-style-type: none;
+    text-indent: 8px;
+}
+
+h2 { 
+    font-size: 134%; /* 16px */
+    color: #f99a32;
+    margin-bottom: 4px;
+}
+
+h3 {
+    font-size: 108%; /* 13px */
+    margin-bottom: 10px;
+}
+
+div.clearFloats {
+    height: 0;
+    clear: both;
+}
+
+/* Layout
+---------------------------------------------------------------------------- */
+
+#wrapper {
+    width: 660px;
+    margin: 20px auto;
+}
+
+/* Header */
+#header {
+    background: transparent url("/img/public/landing/parent-signup/header.png") bottom no-repeat;
+    width: 100%;
+    height: 84px;
+    margin-bottom: 6px;
+    text-align: right;
+}
+
+#header h1 {
+    height: 28px;
+    margin: 0 6px 20px 0;
+}
+
+/* Main Container */
+#main { background: white url("/img/public/landing/parent-signup/box_top.png") top no-repeat;}
+#main_inner {
+    background: transparent url("/img/public/landing/parent-signup/box_bottom.png") bottom no-repeat;
+    width: 620px; /* plus 40px padding = 660px */
+    padding: 10px 30px 30px 10px;
+}
+
+/* Promo Box */
+#promo {
+    width: 244px;
+    padding-top: 155px;
+    float: left;
+}
+
+.version1 #promo { background: url("/img/public/landing/parent-signup/mom-kid.jpg") top no-repeat;}
+.version2 #promo { background: url("/img/public/landing/parent-signup/kid-pillow.jpg") top no-repeat;}
+.version3 #promo { background: url("/assets/img/landing/promo3.jpg") top no-repeat;}
+.version4 #promo { background: url("/assets/img/landing/promo4.jpg") top no-repeat;}
+.version5 #promo { background: url("/assets/img/landing/promo5.jpg") top no-repeat;}
+.version6 #promo { background: url("/assets/img/landing/promo6.jpg") top no-repeat;}
+.version7 #promo { background: url("/assets/img/landing/promo7.jpg") top no-repeat;}
+.version8 #promo { background: url("/assets/img/landing/promo8.jpg") top no-repeat;}
+.version9 #promo { background: url("/assets/img/landing/promo9.jpg") top no-repeat;}
+.version10 #promo { background: url("/assets/img/landing/promo10.jpg") top no-repeat;}
+
+#promo_inner {
+    background-color: #ead988;
+    margin-bottom: 16px;
+    padding: 6px;
+}
+
+#promo_inner h2 {
+    font-size: 117%; /* 14px */
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+#promo_inner img {
+    float: left;
+    margin-right: 2px;
+}
+
+/* Main Content */
+#main_content {
+    width: 356px;
+    float: right;
+}
+
+#main_content h3, #main_content ul {
+    padding-left: 20px;
+}
+
+p#main_signup {
+    text-align: center;
+    margin-bottom: 0;
+}

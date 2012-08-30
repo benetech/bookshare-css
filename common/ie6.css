@@ -1,0 +1,156 @@
+/*For IE's bug with tab navigation*/
+#contentInner,
+cluetip-outer { behavior:expression((this.runtimeStyle.behavior="none")&&(this.tabIndex="-1")); }
+a:active {
+    background-color: #F37D01;
+    color: #000;
+    }
+#brandingHeader a:active { background-color: transparent; }
+#udm ul a.udmR:active,
+#udm ul a.udmY:active {
+    background-color:#FFF;
+    }
+#content,
+#topNavHeader,
+#dashboardHeader .inner,
+.ul,
+.ur,
+.lr,
+.ll,
+#dashboardHeader .divider,
+.sidebar .inner,
+.section,
+.resultsTable th a:link,
+.resultsTable th a:visited,
+#content .breadcrumb ul,
+#footer { zoom: 1; }
+
+#main { background-image: url(/img/public/bk-border-ie6-r.png); }
+#mainInner { background-image: url(/img/public/bk-border-ie6-l.png); }
+.resultsTable caption { padding-bottom: 0.7em; }
+div#searchResultsViewSwitch { top: 1.9em; }
+br.cl,
+br.cr,
+br.cb { font-size: 0; line-height: 0; }
+#udm { left: -18px; width: 100%; }
+.udm ul { margin-left: 3px !important; }
+ol.steps li,
+#content .breadcrumb ul li {
+    padding-left: 0.6em;
+    background: transparent url(/img/public/bk-li-steps.png) 0 50% no-repeat;
+    }
+ol.steps li.first,
+#content .breadcrumb ul li.first {
+    padding-left: 0;
+    background-image: none;
+    }
+#topNavHeader {
+    z-index: 999;
+    margin-left: 19px;
+    }
+#topNavHeader #udm { padding-bottom: 1px; }
+#dashboardHeader ul.linkList li label {
+    display: inline;
+    float: none;
+    }
+#dashboardHeader #loginControl label,
+#dashboardHeader #simpleSearch label { margin-bottom: 0; }
+#logInSubmit,
+#simpleSearchSubmit {
+    float: left;
+    margin: 0.7em 1.0em 0 0;
+    color: #FFF;
+    background-color: #f8872b;
+    font-size: 95%;
+    font-weight: bold;
+    }
+span.throughDash {
+    display: inline-block;
+    width: 4px;
+    height: 1em;
+    background: transparent url(/img/public/bk-throughDash.png) 0 70% no-repeat;
+    }
+.oneCol p,
+.oneCol table { width: 55em; }
+.oneCol .contentRight p,
+.oneCol .contentRight table { width: auto; }
+.oneCol li {
+    max-width: none;
+    margin-right: 22em;
+    }
+.oneCol .contentRight li,
+.oneCol li ul li,
+.oneCol li ol ol li { margin-right: 0; }
+.oneCol ol li {
+    max-width: none;
+    margin-right: 16em;
+    margin-left: 1em;
+    }
+.oneCol ol.authList li {
+    margin-right: 0;
+    margin-left: 0;
+    }
+.oneCol table li { margin-right: 1em; }
+div#messaging { margin-right: 36em; }
+a.larr {
+    padding-left: 20px;
+    background: transparent url(/img/public/bk-larr.png) 0 50% no-repeat;
+    }
+span.larr {
+    padding-left: 20px;
+    background: transparent url(/img/public/bk-larr-dimmed.png) 0 50% no-repeat;
+    }
+a.rarr {
+    padding-right: 20px;
+    background: transparent url(/img/public/bk-rarr.png) 100% 50% no-repeat;
+    }
+span.rarr {
+    padding-right: 20px;
+    background: transparent url(/img/public/bk-rarr-dimmed.png) 100% 50% no-repeat;
+    }
+span.delimit {
+    padding-right: 13px;
+    background: transparent url(/img/public/bk-author-delimit.png) 100% 50% no-repeat;
+    }
+
+div.bookReviewScore span { line-height: 1; }
+body#simpleSearch #featuredContent { height: 30em; }
+#rosterListTable { margin-top: 0.8em; }
+div.section input.advSearchButton { margin-right: 0; }
+div.bookReviewScore { font-size: 90%; }
+#wrap div.news,
+#wrap div.press,
+#wrap div.events,
+#wrap div.newsletter { width: auto; }
+div.sectionNav p { width: auto; }
+input#simpleSearchBox { width: 90%; }
+/*To fix IE same page navigation focus bug and IE/Jaws not "seeing" the list on the home page when in list navigation mode*/
+#mainContent,
+ul.featureList li { zoom: 1; }
+
+body a#uservoice-feedback-tab,
+body a#uservoice-feedback-tab:link {
+      position: absolute !important;
+	  top: expression( ( 100 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+	  left: expression( ( ( ignoreMe2 = document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) / 2 - 376) + 'px' );
+      background-image: none !important; 
+      filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/ideas_tab.png');
+}
+
+a#uservoice-feedback-tab:hover, #uservoice-feedback-tab:focus { 
+  background-image: none !important; 
+}
+
+body #bookshare-blog-span {
+	background-image:none !important;
+}
+
+#bookshare-blog {
+	position:relative !important;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/blog-background.png');
+    text-indent:0.8em !important;
+    line-height:20px;
+}
+
+/*IE6 and 7 can't handle <em> in a float*/
+em {zoom: 100%; overflow: hidden;}

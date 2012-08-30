@@ -1,0 +1,42 @@
+@charset "UTF-8";
+.body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-style: normal;
+	line-height: 14pt;
+	font-weight: normal;
+	font-variant: normal;
+	color: #333333;
+}
+.headline {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.boldbody {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-style: normal;
+	line-height: 14pt;
+	font-weight: bold;
+	color: #333333;
+}
+.italicbody {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-style: italic;
+	line-height: 14pt;
+	font-weight: normal;
+	color: #333333;
+}
+.blueboldbody {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-style: normal;
+	line-height: 14pt;
+	font-weight: bold;
+	color: #445F9E;
+}
