@@ -69,7 +69,7 @@ body {
     text-align: center;
     font-size: small;
     font-family: Helvetica, Arial, "Lucida Grande", Geneva, sans-serif;
-    color: #777;
+    color: #333;
     background: #B0C6F5 url(/img/public/bk-body.png) left top repeat-x;
     }
  
@@ -628,7 +628,8 @@ ul.sub li strong { padding-top: 0.1em; }
  
 #canvas {
     padding: 1em 12px 0 12px;
-    background-color: #FEBD57;
+    /*background-color: #FEBD57;*/
+    background-color: #FFFFFF;
     }
  
 #content {
