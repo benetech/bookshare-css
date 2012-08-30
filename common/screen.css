@@ -22,7 +22,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding: 0;
     border: 0;
     outline: 0;
-    font-size: 50%;
+    font-size: 100%;
     vertical-align: baseline;
     background: transparent;
 }
@@ -69,7 +69,7 @@ body {
     text-align: center;
     font-size: small;
     font-family: Helvetica, Arial, "Lucida Grande", Geneva, sans-serif;
-    color: #333;
+    color: #777;
     background: #B0C6F5 url(/img/public/bk-body.png) left top repeat-x;
     }
  
