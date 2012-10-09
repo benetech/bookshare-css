@@ -1,0 +1,974 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>    My History - Bookshare - Accessible Books for Individuals with Print Disabilities
+</title>
+
+
+    <meta name="Description" content="Bookshare - Accessible Books for Individuals with Print Disabilities" />
+    <meta name="Keywords" content="Bookshare, Benetech, accessible library, free ebooks for qualified students, digital book formats for blind, low vision, physical disability, reading disabilities, assistive technology, adaptive technology, reading support, special education, IDEA, Chafee, BRAILLE, DAISY, digital book formats, accessible instructional materials, AIM, text to speech, text readers, Braille notes, educational resources for persons with disabilities, U.S. Office of Special Education grants and awards, Jim Fruchterman, Arkenstone, Stimulus, ARRA, Individuals with Disabilities Education Act" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="/js/third-party/jquery/latest/jquery.js"></script>
+    <script type="text/javascript" src="/js/common/benetech-commons.js"></script>
+    <script type="text/javascript" src="/js/common/benetech-accessibility.js"></script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+    
+    
+<!-- CSS for Screen -->    
+    <link rel="stylesheet" type="text/css" href="/css/common/screen-form-widgets_en_US.css?version=3.6.0" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/common/screen.css?version=3.7.2" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/common/print.css" media="print" />
+
+<!-- CSS for Mobile Devices -->    
+    <link rel="stylesheet" type="text/css" href="/css/common/handheld.css" media="only screen and (max-device-width:600px)" />
+
+<!-- end CSS for Mobile Devices -->    
+
+
+    
+    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+    
+    <script type="text/javascript" src="/js/common/beta.js"></script>
+    <!-- UDM Dropdown Menus -->
+    <script type="text/javascript" src="/js/third-party/udm/udm-custom.js"></script>
+    <script type="text/javascript" src="/js/third-party/udm/udm-control.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/third-party/udm/udm-style.css" media="screen" />
+
+    <!--[if IE 6]>
+      <link rel="stylesheet" type="text/css" href="/css/common/ie6.css" media="screen" />
+    <![endif]-->
+    <!--[if IE 7]>
+      <link rel="stylesheet" type="text/css" href="/css/common/ie7.css" media="screen" />
+    <![endif]-->
+    <!--[if IE 8]>
+      <link rel="stylesheet" type="text/css" href="/css/common/ie8.css" media="screen" />
+    <![endif]-->
+    <link rel="search" type="application/opensearchdescription+xml" href="/osd" title="Bookshare" />
+    <script language="javascript">
+
+function updatePackagingStatus(data) {
+	var tpr = data.titleProcessingResult;
+	if (tpr.titleProcessingStatus == 'COMPLETED') {
+		var tprItem = $('#'+tpr.requestedTag);
+		var tprTitle = tprItem.attr("title").replace(/\s+/g, ' ');
+        var newLink = $('<a title="'+tprTitle+'">Available</a>');
+        var downloadFormat = tpr.downloadFormat;
+		if (downloadFormat == 'DAISY_AUDIO' && tpr.audioDeliveryMethod == 'MEDIA_MANAGER') {
+			newLink.attr('href','/songbirdOrientation');
+		} else if (downloadFormat == 'EPUB3' && tpr.epub3DeliveryMethod == 'DIRECTORY') {
+		    newLink.attr('href','/readInBrowser?titleInstanceId=' + tpr.titleInstanceId);
+		    newLink.text('Read Now');
+		} else {
+			var newUrl = "/download/book?titleInstanceId=" + tpr.titleInstanceId;
+			newUrl += "&downloadFormat=" + downloadFormat;
+			newUrl += "&tag=" + tpr.tag;
+            newLink.attr('href',newUrl);
+		}		
+		tprItem.replaceWith(newLink);
+		newLink.focus();
+	} if (tpr.titleProcessingStatus == 'PACKAGING_FAILED') {
+	    var tprItem = $('#'+tpr.requestedTag);
+	    tprItem.html('Failed');   
+	}
+}
+
+function checkPackagingUpdates() {
+	var pkgItems = $('span.packageInProgress');
+	if (pkgItems.size() == 0) {
+		clearInterval(window.statusInterval);
+	} else {
+		pkgItems.each(function() {
+			var fetchURL = '/bookHistoryProcessingStatus?tag=' + $(this).attr('id');
+			jQuery.getJSON(fetchURL, updatePackagingStatus);
+		});
+	}
+}
+
+$(document).ready(function() {
+	window.statusInterval = setInterval(checkPackagingUpdates, 10000);
+});
+
+</script>
+<link rel="stylesheet" href="/css/third-party/jquery/flora.datepicker.css" type="text/css" media="screen" title="Flora (Default)" />
+<script type="text/javascript" src="/js/third-party/jquery/latest/ui/jquery.ui.datepicker.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  if ($.datepicker) $('.datePick').datepicker({yearRange : '-80:+10', showOn: 'button', buttonImage: '/img/stock_calendar.png', buttonImageOnly: true, buttonText: 'Click for calendar'});
+});
+</script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+    $('#searchFilterList select,#searchFilterTable select').mousedown(function(e) {
+	    e.target.moused = true;
+    }).change(function(e) {
+    	if (e.target.moused) e.target.form.submit();
+    });
+});
+//]]>
+</script>
+
+<script type="text/javascript">
+
+	var DOWNLOAD_FORMATS = [];
+	var INIT_OPTGROUP = '<optgroup label="Other formats"></optgroup>';
+	var INIT_SETPREFS = '<option value="setPreferences">Set Preferences...</option>';
+	
+	function editDownloadPreferences() {
+		if ($('form#downloadPrefsForm').size() == 0) {
+			$.get(getAjaxUrl(), drawDownloadPreferencesDialog, 'html');
+		}
+	}
+	
+	function getActiveFormatPicker() {
+		var activeMenu = $('body').data('activeDownloadFormatPicker');
+		return (activeMenu == null) ? $('select.downloadFormatSelector') : $(activeMenu);
+	}
+	
+	function getResettableFormatPickers() {
+		return ($('body').data('sponsorMode')) ? $(getActiveFormatPicker()) : $('select.downloadFormatSelector');
+	}
+	
+	function getAjaxUrl() {
+		if ($('body').data('sponsorMode')) {
+			var sMenu = $('body').data('activeDownloadFormatPicker');
+			if (sMenu != null) {
+				var x = $('select[name="' + sMenu.name + '"] + span.downloadPrefsNoJs a');
+				if (x.size() > 0) {
+					return x[0].href;
+				}
+			}
+		}
+		return '/downloadPreferences';
+	}
+	
+	function resizeDownloadPrefsDivs() {
+		// slightly different for om2im warning
+		var b = $('div#downloadPrefsBackground');
+		var d = $('div#downloadPrefsDiv');
+		if ($('input#downloadPrefsFormContinue').size() == 0) {
+			d.css('width', null);
+			d.css('left', ($(window).width()/2) - (d.width()/2));
+		} else {
+			d.css('left', ($(window).width()/4));
+			d.css('width', ($(window).width()/2));
+		}
+		var mw = b.data('minWidth');
+		var ww = $(window).width();
+		b.height($(document).height());
+		b.width((ww > mw) ? ww : mw);
+	}
+	
+	function drawDownloadPreferencesDialog(data) {
+		var target = $('div#downloadPrefsDiv'); 
+		if (target.size() == 0) {
+			var b = $('body');
+			var backgroundDiv = $('<div id="downloadPrefsBackground"></div>');
+			var prefsDiv = $('<div id="downloadPrefsDiv" role="dialog"></div>');
+			backgroundDiv.click(cancelDownloadPrefs);
+			backgroundDiv.data('minWidth', $(document).width());
+			b.append(prefsDiv);
+			b.append(backgroundDiv);
+			target = prefsDiv;
+			
+			$(window).bind('resize', resizeDownloadPrefsDivs);
+		}
+		target.html(data);
+		resizeDownloadPrefsDivs();
+		
+		$('#downloadPrefsFormCancel').click(cancelDownloadPrefs);
+		
+		if ($('#downloadPrefsFormContinue').size() == 0) {
+			bindDialogKeyboardSupport(
+				$('#downloadPrefsFormDefaultFormat').get()[0],
+				$('#downloadPrefsFormCancel').get()[0],
+				cancelDownloadPrefs);
+			$('#downloadPrefsFormOK').click(submitDownloadPrefsForm);
+		} else {
+			bindDialogKeyboardSupport(
+				$('#downloadPrefsFormContinue').get()[0],
+				$('#downloadPrefsFormCancel').get()[0],
+				cancelDownloadPrefs);
+			$('#downloadPrefsFormContinue').click(submitDownloadPrefsForm);
+		}
+	}
+	
+	function cancelDownloadPrefs() {
+		getResettableFormatPickers().each(
+			function() {
+				var m = $(this);
+				if (m.val() == 'setPreferences') {
+					var j = this.options.length;
+					for (i = 0; i < j; i++) {
+						if (this.options[i].value != "") {
+							this.options[i].selected = true;
+							break;
+						}
+					}
+				}
+			}
+		);
+		closeDownloadPrefs();
+	}
+	
+	function closeDownloadPrefs() {
+		var target = $('div#downloadPrefsDiv');
+		target.remove();
+		target = $('div#downloadPrefsBackground');
+		target.remove();
+		$(window).unbind('resize', resizeDownloadPrefsDivs);
+		getActiveFormatPicker().eq(0).focus();
+		$('body').data('activeDownloadFormatPicker', null);
+	}
+	
+	function submitDownloadPrefsForm() {
+		var prefsForm = $('form#downloadPrefsForm');
+		$('#downloadPrefsFormContinue').attr('disabled', 'disabled');
+		$('#downloadPrefsFormOK').attr('disabled', 'disabled');
+		$.post(getAjaxUrl(), prefsForm.serialize(),  afterDownloadPrefsSubmit, 'html');
+	}
+	
+	function afterDownloadPrefsSubmit(data) {
+		var d = $(data);
+		if (d.length == 1 && d[0].id == 'jsonResult') {
+			eval(d.text());
+			
+			getResettableFormatPickers().each(
+				function() {
+					var menu = $(this);
+					// collect existing options
+					var c = menu.find('option').map(function() { return this.value; }).get();
+					menu.empty();
+					
+					// populate the default format
+					var df = DOWNLOAD_FORMATS[0].value;
+					if ((p != null) && (p.defaultFormat != null)) {
+						df = p.defaultFormat;
+					}
+					
+					if ($.inArray(df, c) > -1) {
+						menu.append($(makeOpt(df)));
+					} else if ($.inArray(fallbackFormat(df), c) > -1) {
+						df = fallbackFormat(df);
+						menu.append($(makeOpt(df)));
+					} else {
+						menu.append($('<option value="" disabled="true">' + fmtName(df) + ' is not available</option>'));
+					}
+					var otherFormats = $(INIT_OPTGROUP);
+					var j = DOWNLOAD_FORMATS.length;
+					for (var i = 0; i < j; i++) {
+						var fmtCode = DOWNLOAD_FORMATS[i].value;
+						if (($.inArray(fmtCode, c) > -1) && (fmtCode != df)) {
+							otherFormats.append($(makeOpt(fmtCode)));
+						}
+					}
+					menu.append(otherFormats);
+					menu.append($(INIT_SETPREFS));
+					if ($.inArray(df, c) > -1) {
+						this.options[0].selected = true;
+					}
+				}
+			);
+			closeDownloadPrefs();
+		} else {
+			drawDownloadPreferencesDialog(data);
+		}
+	}
+	
+	function fmtName(df) {
+		var j = DOWNLOAD_FORMATS.length;
+		for (var i = 0; i < j; i++) {
+			if (df == DOWNLOAD_FORMATS[i].value) {
+				return DOWNLOAD_FORMATS[i].displayName;
+			}
+		}
+		return "Unknown format";
+	}
+	
+	function fallbackFormat(df) {
+		var j = DOWNLOAD_FORMATS.length;
+		for (var i = 0; i < j; i++) {
+			if (df == DOWNLOAD_FORMATS[i].value) {
+				return DOWNLOAD_FORMATS[i].format;
+			}
+		}
+		return df;
+	}
+	
+	function makeOpt(df) {
+		return '<option value="' + df + '">' + fmtName(df) + '</option>';
+	}
+	
+	$(function() { 
+		$('body').data('activeDownloadFormatPicker', null);
+		$('body').data('sponsorMode', $('select.omDownload').size() > 0);
+		$('.downloadPrefsNoJs').addClass('hideDownloadPrefsLink');
+		$('select.downloadFormatSelector').append(INIT_SETPREFS);
+		$('select.downloadFormatSelector').change(
+			function(evt) {
+				var o = this.options[this.selectedIndex];
+				if (o.value == 'setPreferences') {
+					$('body').data('activeDownloadFormatPicker', this);
+					editDownloadPreferences();
+				}
+			}
+		);
+	});
+	
+</script>
+
+    <script type="text/javascript" src="/js/common/bookshelves.js"></script>
+</head>
+
+<body class="public" onload="redirectWhenSongbird()">
+    
+
+<script type="text/javascript" src="/js/third-party/udm/udm-dom.js"></script>
+<script type="text/javascript" src="/js/third-party/udm/udm-mod-keyboard.js"></script>
+<script type="text/javascript" src="/js/third-party/udm/udm-x-youarehere.js"></script>
+<div id="wrap">
+
+		<a class="hide" href="#mainContent">Skip to main content.</a>
+
+<div id="brandingHeader" role="banner">
+<div class="inner">
+<a href="/"><span class="hide">Bookshare Home</span></a>
+</div><!-- End .inner -->
+</div><!-- End #brandingHeader -->
+
+<div id="main">
+<div id="mainInner">
+<div id="canvas">
+<div id="dashboardHeader">
+<div class="inner">
+    
+
+
+<div class="ul"><div class="ur"><div class="lr"><div class="ll">
+<div class="divider">
+<div class="divider">
+<div id="loginControl">
+        <div class="accountLinks">
+        <h2>Partner Individual Demo's Task Bar</h2>
+                <ul class="accountFeatures org">
+                            <li class="first"> <a href="/quickSearch">Quick Search</a></li>
+                            <li> <a href="/bookHistory">My History</a></li>
+                            <li> <a href="/myBookshelves">My Bookshelves</a></li>
+                            <li> <a href="/myAccount">My Account</a></li>
+                                </ul><ul class="accountFeatures org">
+                            <li class="first"> <a href="/changePassword">Change Password</a></li>
+                            <li> <a href="?j_logOut=true">Log Out</a></li>
+                </ul>
+        </div><!-- End .accountLinks -->
+</div><!-- End #loginControl -->
+
+<div id="simpleSearch">
+    <form role="search" method="get" action="https://www.bookshare.org/search">
+        <fieldset>
+        <label class="helpCursor" title="Search for books using title, author (firstname lastname) or ISBN" for="simpleSearchBox">Search<span class="hide"> Title, Author (firstname lastname) or ISBN</span></label>
+        <input type="text" id="simpleSearchBox" name="keyword" value="" />
+        <input title="Search for books using title, author, publisher or ISBN" type="submit" class="button helpCursor" id="simpleSearchSubmit" name="search" maxlength="1024" value="Search" />
+        <ul class="linkList">
+            <li class="first"><a href="/search">Advanced Search</a></li>
+            <li><a href="/browse/start">Browse</a></li>
+        </ul>
+        </fieldset>
+    </form>
+</div><!-- End #simpleSearch -->
+<div id="quickLinks">
+<div class="inner">
+    <h2>Quick Links</h2>
+    <ul>
+        <li class="first"><a href="/browse/periodical">Newspapers & Magazines</a></li>
+        <li><a href="/_/help/training/upcomingWebinars">Training</a></li>
+        <li><a href="/_/contribute/donateFunds">Donate Now</a></li>
+    </ul>
+</div><!-- End .inner -->
+</div><!-- End #quickLinks -->
+
+<br class="cb" />
+</div><!-- End .divider -->
+</div><!-- End .divider -->
+</div><!-- End .ll --></div><!-- End .lr --></div><!-- End .ur --></div><!-- End .ul -->
+
+</div><!-- End .inner -->
+</div><!-- End #dashboardHeader -->
+
+<div id="content">
+<div id="contentInner">
+<div class="ul"><div class="ur"><div class="lr"><div class="ll">
+
+    	<a id="mainContent" name="mainContent"></a>
+
+<div id="messaging">
+    
+
+</div>
+
+    <div role="main" id="featuredContent">
+    
+<div>
+    <p>
+        This page lists all of the books downloaded on your account, with the current status of each request. Use the
+        filters and sorting options to more easily find titles you have downloaded in the past.
+    </p>
+    <noscript>
+        <p>Manually <a href="/bookHistory">reload this page</a> to get more recent status on
+        book(s) that are being packaged and not yet ready for download. <b>Note:</b> This status information will refresh
+        automatically if you allow Javascript to run in your browser.</p>
+    </noscript>
+
+
+<div id="resultsList">
+
+<div id="searchResultsHeader"> 
+	<h1 class="browse">My History</h1>
+	
+
+<div id="searchResultsViewSwitch">
+<ul class="lst">
+	<li><a href="/bookHistory?resultsView=TABLE&
+">Table View</a></li>
+	<li><strong>List View</strong></li>
+</ul>
+</div><!-- End #searchResultsViewSwitch -->
+
+
+
+
+            <p class="downloadPrefsNoJs"><a href="/downloadPreferences?returnPath=L2Jvb2tIaXN0b3J5P21vZHVsZU5hbWU9cHVibGlj">Set download preferences</a></p>
+</div>
+
+
+
+
+
+    
+    <div class="searchResultsPaging">
+    <div id="pagingLeft">
+        <span class="searchResultsShowing">Showing 1 <span class="throughDash"><span>through</span></span> 14 of 14 results</span>
+    </div>
+    <div id="pagingRight">
+    </div>
+    </div>
+
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/696/A%2BCollection%2Bof%2BBeatrix%2BPotter%2BStories">A Collection of Beatrix Potter Stories</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Potter%2C%20Beatrix">Potter, Beatrix</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/08/2012 &nbsp;<span class="soft">8:31 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=696&downloadFormat=DAISY&titleDownloadId=4944905" title="A Collection of Beatrix Potter Stories">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/1910/Tom%2BSawyer%2BAbroad">Tom Sawyer Abroad</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Twain%2C%20Mark">Twain, Mark</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/06/2012 &nbsp;<span class="soft">7:28 AM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=1910&downloadFormat=DAISY&titleDownloadId=4935460" title="Tom Sawyer Abroad">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/2083/Pride%2Band%2BPrejudice">Pride and Prejudice</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Austen%2C%20Jane">Austen, Jane</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/05/2012 &nbsp;<span class="soft">10:01 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=2083&downloadFormat=DAISY&titleDownloadId=4934777" title="Pride and Prejudice">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/167444/Transforming%2BAmerican%2BEducation%253A%2BLearning%2BPowered%2Bby%2BTechnology">Transforming American Education: Learning Powered by Technology</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=U.%20S.%20Department%20of%20Education">U. S. Department of Education</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/05/2012 &nbsp;<span class="soft">9:50 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=167444&downloadFormat=DAISY&titleDownloadId=4934727" title="Transforming American Education: Learning Powered by Technology">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/1143/The%2BGreat%2BBig%2BTreasury%2Bof%2BBeatrix%2BPotter">The Great Big Treasury of Beatrix Potter</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Potter%2C%20Beatrix">Potter, Beatrix</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/05/2012 &nbsp;<span class="soft">9:24 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=1143&downloadFormat=DAISY&titleDownloadId=4934629" title="The Great Big Treasury of Beatrix Potter">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/276/Buch%2Bder%2BLieder">Buch der Lieder</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Heine%2C%20Heinrich">Heine, Heinrich</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/05/2012 &nbsp;<span class="soft">4:11 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+HTML                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=276&downloadFormat=HTML&titleDownloadId=4933554" title="Buch der Lieder">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/7959/Agnes%2BBernauer">Agnes Bernauer</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Hebbel%2C%20Friedrich">Hebbel, Friedrich</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/05/2012 &nbsp;<span class="soft">4:10 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=7959&downloadFormat=DAISY&titleDownloadId=4933550" title="Agnes Bernauer">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/441698/CK-12%2BEngineering%253A%2BAn%2BIntroduction%2Bfor%2BHigh%2BSchool">CK-12 Engineering: An Introduction for High School</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Foundation%2C%20Ck-12">Foundation, Ck-12</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/03/2012 &nbsp;<span class="soft">11:09 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+EPUB 3 - Beta                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                            <a href="/readInBrowser?titleInstanceId=441698">Read Now</a>
+
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/57462/Introduction%2Bto%2BEconomic%2BAnalysis">Introduction to Economic Analysis</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Mcafee%2C%20R.%20Preston">Mcafee, R. Preston</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/03/2012 &nbsp;<span class="soft">10:01 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=57462&downloadFormat=DAISY&titleDownloadId=4924029" title="Introduction to Economic Analysis">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/290623/Sample%2BBook%2BOf%2BEnormous%2BSize">Sample Book Of Enormous Size</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Bookshare">Bookshare</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/03/2012 &nbsp;<span class="soft">7:50 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=290623&downloadFormat=DAISY&titleDownloadId=4923620" title="Sample Book Of Enormous Size">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/64879/The%2BRocket%2BBoys%2Bof%2BNIH">The Rocket Boys of NIH</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Luckett%2C%20Don">Luckett, Don</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 10/03/2012 &nbsp;<span class="soft">7:38 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY Text Only                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=64879&downloadFormat=DAISY&titleDownloadId=4923582" title="The Rocket Boys of NIH">Downloaded</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/73/The%2BDivine%2BComedy%252C%2BHell">The Divine Comedy, Hell</a>
+</h2>
+               by 
+                    <span class="bookAuthor delimit">        <a href="/browse/author?key=Alighieri%2C%20Dante">Alighieri, Dante</a>
+</span><span class="hide"> and </span>
+
+                    <span class="bookAuthor">        <a href="/browse/author?key=Cary%2C%20H.%20F.">Cary, H. F.</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 09/17/2012 &nbsp;<span class="soft">1:15 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+EPUB 3 - Beta                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=73&downloadFormat=EPUB3&titleDownloadId=4848540" title="The Divine Comedy, Hell">Available</a>
+                            <a href="/readInBrowser?titleInstanceId=73">Read Now</a>
+
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/206657/CK-12%2BBiology%2BI">CK-12 Biology I</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Ck-12">Ck-12</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 09/14/2012 &nbsp;<span class="soft">3:40 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+DAISY with Images                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=206657&downloadFormat=DAISY_WITH_IMAGES&titleDownloadId=4838277" title="CK-12 Biology I">Available</a>
+            
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+
+            <div class="resultsBook">
+            <h2 class="bookTitle">            <a href="/browse/book/352/Acres%2Bof%2BDiamonds">Acres of Diamonds</a>
+</h2>
+               by 
+                    <span class="bookAuthor">        <a href="/browse/author?key=Conwell%2C%20Russell%20H.">Conwell, Russell H.</a>
+</span>
+
+
+            <div class="resultsBookMetadata">
+
+    				<p class="metadataField"><strong>Date:</strong> 09/13/2012 &nbsp;<span class="soft">4:20 PM</span></p>
+                	<p class="metadataField"><strong>Format:</strong>
+EPUB 3 - Beta                	</p>
+					<p class="metadataField"><strong>Status:</strong>
+                <a href="/download/book?titleInstanceId=352&downloadFormat=EPUB3&titleDownloadId=4833321" title="Acres of Diamonds">Available</a>
+                            <a href="/readInBrowser?titleInstanceId=352">Read Now</a>
+
+					</p>
+            </div><!-- End .resultsBookMetadata -->
+            </div><!-- End .resultsBook -->
+
+    
+    <div class="searchResultsPaging">
+    <div id="pagingLeft">
+        <span class="searchResultsShowing">Showing 1 <span class="throughDash"><span>through</span></span> 14 of 14 results</span>
+    </div>
+    <div id="pagingRight">
+    </div>
+    </div>
+</div><!-- End #resultsList -->
+
+
+
+    <div id="searchFilterList" class="sidebar">
+        <div class="inner">
+            <h3>Modify Your Results</h3>
+
+
+<form method="get" action="/bookHistory">
+
+<fieldset class="filters">
+
+
+    <div class="dateCombo">
+        <label for="startDate" >From:</label>
+    <input id="startDate" type="text" name="startDate" value="09/09/2012" class="datePick"  />
+    
+    </div>
+    <div class="dateCombo">
+        <label for="endDate">To:</label>
+    <input id="endDate" type="text" name="endDate" value="10/09/2012" class="datePick"  />
+    
+    </div>
+
+<label  for="sortOrder">Sort Order:</label><br />
+    <select id="sortOrder" name="sortOrder">
+            <option  value="ALPHABETICALLY">By Title</option>
+            <option  value="AUTHOR">By Author</option>
+            <option selected="selected" value="DATE_DOWNLOADED">By Date Downloaded</option>
+    </select>
+
+
+
+
+
+    <label for="titleDownloadPackagingStatus">Status:</label><br />
+    <select id="titleDownloadPackagingStatus" name="titleDownloadPackagingStatus">
+            <option value="">All</option>
+            <option  value="SCHEDULED_FOR_PACKAGING">Scheduled for Packaging</option>
+            <option  value="READY_FOR_DOWNLOAD">Ready for Download</option>
+            <option  value="DOWNLOADED">Downloaded</option>
+            <option  value="PACKAGING_FAILED">Packaging Failed</option>
+    </select>
+
+    <br/>
+    <label for="bookshelf">Bookshelf:</label><br />
+    <select id="bookshelfId" name="bookshelfId">
+            <option value="">All Bookshelves</option>
+            <option  value="20">My Favorites</option>
+            <option  value="21">Test</option>
+    </select>
+
+
+<input type="hidden" name="offset" value="0" />
+
+<input class="fr" type="submit" value="GO" />
+</fieldset>
+</form>
+
+        </div>
+    </div>
+
+</div>
+
+    </div><!-- End #featuredContent -->
+    <div class="featuredSidebarContainer">
+    
+    </div><!-- End #featuredSidebarContainer -->
+
+    
+
+<br class="cb" />
+</div><!-- End .ll --></div><!-- End .lr --></div><!-- End .ur --></div><!-- End .ul -->
+</div><!-- End #contentInner -->
+</div><!-- End #content -->
+
+</div><!-- End #canvas -->
+</div><!-- End #mainInner -->
+</div><!-- End #main -->
+
+<div id="topNavHeader">
+<div class="inner">
+    
+    <h2 class="hide">Site Navigation</h2>
+    <ul id="udm" class="udm" role="navigation">
+            <li><h3 class="publicHome"><a href="/"><span>Home</span></a></h3>
+            </li>
+            <li><h3 class="membershipSection"><a href="/_/membership/overview"><span>Membership</span></a></h3>
+                <ul class="membershipSection">
+                            <li> <a href="/_/membership/overview">Membership Overview</a></li>
+                            <li> <a href="https://www.bookshare.org/membershipOptions">Membership Options</a></li>
+                            <li> <a href="/_/membership/qualifications">Qualifications</a></li>
+                            <li> <a href="/_/membership/gift">Gift Memberships</a></li>
+                            <li> <a href="/_/membership/international">International Membership</a></li>
+                </ul>
+            </li>
+            <li><h3 class="gettingStartedSection"><a href="/_/gettingStarted/overview"><span>Getting Started</span></a></h3>
+                <ul class="gettingStartedSection">
+                            <li> <a href="/_/gettingStarted/overview">Getting Started Overview</a></li>
+                            <li> <a href="/_/gettingStarted/findBooks">Find Books</a></li>
+                            <li> <a href="/_/gettingStarted/downloadBooks">Download Books</a></li>
+                            <li> <a href="/_/gettingStarted/readBooks">Read Books</a></li>
+                            <li> <a href="/_/gettingStarted/readingTools/overview">Reading Tools</a></li>
+                </ul>
+            </li>
+            <li><h3 class="communitySection"><a href="/_/community/overview"><span>Community</span></a></h3>
+                <ul class="communitySection">
+                            <li> <a href="/_/community/overview">Community Overview</a></li>
+                            <li> <a href="/_/community/students/home">Students</a></li>
+                            <li> <a href="/_/community/parent/home">Parents</a></li>
+                            <li> <a href="/_/community/educators/home">Educators - K-12</a></li>
+                            <li> <a href="/_/community/postsecondary/home">Universities</a></li>
+                            <li> <a href="/_/community/adults/home">Adults</a></li>
+                            <li> <a href="/_/community/veterans/home">Veterans</a></li>
+                            <li> <a href="/_/community/organizations">Organizations</a></li>
+                            <li> <a href="/_/community/volunteers">Volunteers</a></li>
+                            <li> <a href="/_/community/publishers">Publishers</a></li>
+                            <li> <a href="/_/community/authors">Authors</a></li>
+                            <li> <a href="https://developer.bookshare.org">Developers</a></li>
+                </ul>
+            </li>
+            <li><h3 class="volunteerSection"><a href="/_/volunteer/overview"><span>Volunteer</span></a></h3>
+                <ul class="volunteerSection">
+                            <li> <a href="/_/volunteer/overview">Volunteer Overview</a></li>
+                            <li> <a href="/myVolunteering">Volunteering</a></li>
+                </ul>
+            </li>
+            <li><h3 class="contributeSection"><a href="/_/contribute/overview"><span>Contribute</span></a></h3>
+                <ul class="contributeSection">
+                            <li> <a href="/_/contribute/overview">Contribute Overview</a></li>
+                            <li> <a href="/_/contribute/donateFunds">Donate Funds</a></li>
+                            <li> <a href="/_/contribute/donateBooks">Donate Books</a></li>
+                            <li> <a href="/_/contribute/volunteer">Volunteer</a></li>
+                </ul>
+            </li>
+            <li><h3 class="aboutUsSection"><a href="/_/aboutUs/overview"><span>About Us</span></a></h3>
+                <ul class="aboutUsSection">
+                            <li> <a href="/_/aboutUs/overview">About Us Overview</a></li>
+                            <li> <a href="/_/aboutUs/missionHistory">Mission</a></li>
+                            <li> <a href="/_/aboutUs/howBookshareWorks">How Bookshare Works</a></li>
+                            <li> <a href="/_/aboutUs/newsAndEvents">News and Events</a></li>
+                            <li> <a href="/_/aboutUs/leadership">Leadership</a></li>
+                            <li> <a href="/_/aboutUs/partners">Partners</a></li>
+                            <li> <a href="/_/aboutUs/majorDonors">Major Donors</a></li>
+                            <li> <a href="/_/aboutUs/memberStories">Member Stories</a></li>
+                            <li> <a href="/_/aboutUs/legalInformation">Legal Information</a></li>
+                </ul>
+            </li>
+            <li><h3 class="helpSection"><a href="/portal"><span>Help</span></a></h3>
+                <ul class="helpSection">
+                            <li> <a href="/portal">Support Center & FAQs</a></li>
+                            <li> <a href="/_/help/accessibilityAndEaseOfUse">Accessibility and Ease of Use</a></li>
+                            <li> <a href="/_/help/forms">Forms</a></li>
+                            <li> <a href="/_/help/training/upcomingWebinars">Training</a></li>
+                </ul>
+            </li>
+            <li><h3 class="contactUsSection"><a href="/contactUs"><span>Contact Us</span></a></h3>
+            </li>
+        <li><span id="bookshare-blog-span"><a id="bookshare-blog" href="http://blog.bookshare.org">Bookshare Blog!</a></span></li>
+        <li>    <a href="https://bookshare.uservoice.com/forums/48297?sso=JOK0lK9%252FAx%252Fe4xB5v2TF9K%252FqPZ6zfSkTuIMgb%252B8SrqRKjKpGfJoFNdRUfiz1oBZKAymNZbWd4lQOm8fu20yuEGcgC6Hb%252FO5CeP5A81e%252Fy77x7aZaSywHo%252FeyLTMHrqLLeX22EikTCHO6tyjpWh4J0ykxc%252BVBiq9IuPz3RMhYcINugZI5UqciBpM4%252FPWqrHbS" id="uservoice-feedback-tab">Ideas?</a>
+</li>
+    </ul>
+
+<br class="cb" />
+</div><!-- End .inner -->
+</div><!-- End #topNavHeader -->
+
+<div id="footer">
+    
+<div id="footerInner">
+    <div id="social-media-icons">
+        Follow us:
+            <a href="http://www.facebook.com/bookshare"/><img src="/img/icon_facebook.png" alt="Facebook" /></a>
+            <a href="http://twitter.com/bookshare"/><img src="/img/icon_twitter.png" alt="Twitter" /></a>
+            <a href="http://blog.bookshare.org/"><img src="/img/icon_wordpress.png" alt="Blog" /></a>
+    </div>
+    <div id="legal">
+        <a href="http://developer.bookshare.org">Developers</a> |
+        <a href="https://www.bookshare.org/siteSearch">Search this Site</a> |
+        <a href="https://www.bookshare.org/_/aboutUs/legalInformation">Legal</a> |
+        <a href="https://www.bookshare.org/about/privacy">Privacy</a> |
+<a href="https://www.bookshare.org/siteMap">Site Map</a>    </div>
+    <br clear="all"/>
+    Bookshare&reg; and Benetech&reg; are registered trademarks of Beneficent Technology, Inc.<br/>
+    This website is &copy; Copyright 2002-2012, Beneficent Technology, Inc.
+</div><!-- End #footerInner -->
+
+</div><!-- End #footer -->
+
+</div><!-- End #wrap -->
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    
+    <script type="text/javascript">
+    try{
+    var pageTracker = _gat._getTracker("UA-2390830-4");
+    pageTracker._setDomainName('bookshare.org');
+    pageTracker._setCustomVar(1, "UserType", "MEMBER", 1);
+    pageTracker._trackPageview();
+    } catch(err) {}
+    </script>
+</body>
+</html>
+

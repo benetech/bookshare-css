@@ -1,0 +1,71 @@
+h2
+{
+color:black;
+text-align:center;
+}
+
+.bookTitle a {
+color:black;
+}
+
+/* sidebar */
+
+.udm {
+display: none;
+}
+
+#wrap {
+width:100%;
+}
+
+#featuredContent div p {
+display: none; 
+}
+
+#featuredContent .resultsBookMetadata p {
+display: inline;
+font-size: 150%;
+}
+
+
+.divider{
+display: none;
+}
+
+div#resultsList {
+        width: 100%
+}
+.sidebarNarrow, #searchFilterList, #searchSingleResultBox {
+display: none;
+
+}
+.sidebar, .centerbar {
+display: none;
+
+}
+.sidebar, .sidebarHome {
+display: none;
+
+}
+
+div.resultsBook {
+    clear: left;
+    margin-top: 1em;
+    width: 100%;
+}
+
+.featuredSidebarContainer {
+    display: none;
+    float: right;
+    width: 35%;
+}
+
+.bookTitle a {
+ font-size:200%;
+}
+
+.bookAuthor a {
+display:block;
+ font-size:200%;
+}
+
